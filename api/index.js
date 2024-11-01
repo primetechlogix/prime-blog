@@ -1,7 +1,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import router from './routes/user.route.js';
+import userRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js'
+
 //Mongo Db Connection
 dotenv.config();
 mongoose
@@ -13,12 +15,15 @@ mongoose
     console.log(err);
   });
 
-//To run server
+//To run server   
 const app = express();
+app.use(express.json())
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
 
 //To test api working or not
 //req we send in response we recieve
-app.use('/api/user', router)
+app.use('/api/user', userRoutes)
+app.use('/api/auth', authRoutes);

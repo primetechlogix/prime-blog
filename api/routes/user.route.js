@@ -2,7 +2,6 @@ import express from 'express'
 import { test } from '../controllers/user.controller.js';
 
 const router = express.Router();
-
 //To test api working or not
 //req we send in response we recieve
 router.get('/test',test);
